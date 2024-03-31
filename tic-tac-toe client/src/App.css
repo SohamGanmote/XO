@@ -1,0 +1,22 @@
+#root {
+	margin: 0px;
+	padding: 0px;
+}
+
+.loader-circle {
+	width: 50px;
+	height: 50px;
+	border: 5px solid transparent;
+	border-top: 5px solid #5755fe; /* Color of the loader */
+	border-radius: 50%;
+	animation: rotate 1s linear infinite; /* Animation definition */
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg); /* Initial rotation */
+	}
+	to {
+		transform: rotate(360deg); /* Final rotation */
+	}
+}

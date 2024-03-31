@@ -1,0 +1,59 @@
+.popup {
+	animation-name: popup;
+	animation-duration: 300ms;
+}
+
+.popout {
+	animation-name: popout;
+	animation-duration: 300ms;
+}
+
+@keyframes popup {
+	from {
+		opacity: 0;
+		scale: 95%;
+	}
+	to {
+		opacity: 1;
+		scale: 100%;
+	}
+}
+
+@keyframes popout {
+	from {
+		opacity: 1;
+		scale: 100%;
+	}
+	to {
+		opacity: 0;
+		scale: 95%;
+	}
+}
+
+.backdroppopup {
+	animation-name: backdroppopup;
+	animation-duration: 300ms;
+}
+
+.backdroppopout {
+	animation-name: backdroppopout;
+	animation-duration: 300ms;
+}
+
+@keyframes backdroppopup {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes backdroppopout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
