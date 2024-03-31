@@ -55,6 +55,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "1",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else if (id === "2" && two === undefined) {
@@ -62,6 +63,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "2",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else if (id === "3" && three === undefined) {
@@ -69,6 +71,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "3",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else if (id === "4" && four === undefined) {
@@ -76,6 +79,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "4",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else if (id === "5" && five === undefined) {
@@ -83,6 +87,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "5",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else if (id === "6" && six === undefined) {
@@ -90,6 +95,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "6",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else if (id === "7" && seven === undefined) {
@@ -97,6 +103,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "7",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else if (id === "8" && eight === undefined) {
@@ -104,6 +111,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "8",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else if (id === "9" && nine === undefined) {
@@ -111,6 +119,7 @@ const MultiplayerBoard = () => {
 			socket.emit("playerPlayed", {
 				clicked: "9",
 				by: logInPlayer,
+				for: player2,
 				symbol: player1Icon,
 			});
 		} else {
@@ -125,63 +134,72 @@ const MultiplayerBoard = () => {
 			setOne(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "1",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else if (id === "2" && two === undefined) {
 			setTwo(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "2",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else if (id === "3" && three === undefined) {
 			setThree(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "3",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else if (id === "4" && four === undefined) {
 			setFour(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "4",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else if (id === "5" && five === undefined) {
 			setFive(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "5",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else if (id === "6" && six === undefined) {
 			setSix(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "6",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else if (id === "7" && seven === undefined) {
 			setSeven(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "7",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else if (id === "8" && eight === undefined) {
 			setEight(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "8",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else if (id === "9" && nine === undefined) {
 			setNine(player2Icon);
 			socket.emit("playerPlayed", {
 				clicked: "9",
-				by: logInPlayer,
+				by: player2,
+				for: player1,
 				symbol: player2Icon,
 			});
 		} else {
@@ -284,42 +302,44 @@ const MultiplayerBoard = () => {
 	};
 
 	socket.off("playerPlayed").on("playerPlayed", (data) => {
-		if (data.by !== logInPlayer) {
-			if (data.clicked === "1") {
-				setOne(data.symbol);
-				setCurrentTurn(currentTurn + 1);
-			}
-			if (data.clicked === "2") {
-				setTwo(data.symbol);
-				setCurrentTurn(currentTurn + 1);
-			}
-			if (data.clicked === "3") {
-				setThree(data.symbol);
-				setCurrentTurn(currentTurn + 1);
-			}
-			if (data.clicked === "4") {
-				setFour(data.symbol);
-				setCurrentTurn(currentTurn + 1);
-			}
-			if (data.clicked === "5") {
-				setFive(data.symbol);
-				setCurrentTurn(currentTurn + 1);
-			}
-			if (data.clicked === "6") {
-				setSix(data.symbol);
-				setCurrentTurn(currentTurn + 1);
-			}
-			if (data.clicked === "7") {
-				setSeven(data.symbol);
-				setCurrentTurn(currentTurn + 1);
-			}
-			if (data.clicked === "8") {
-				setEight(data.symbol);
-				setCurrentTurn(currentTurn + 1);
-			}
-			if (data.clicked === "9") {
-				setNine(data.symbol);
-				setCurrentTurn(currentTurn + 1);
+		if (data.for === logInPlayer) {
+			if (data.by !== logInPlayer) {
+				if (data.clicked === "1") {
+					setOne(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
+				if (data.clicked === "2") {
+					setTwo(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
+				if (data.clicked === "3") {
+					setThree(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
+				if (data.clicked === "4") {
+					setFour(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
+				if (data.clicked === "5") {
+					setFive(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
+				if (data.clicked === "6") {
+					setSix(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
+				if (data.clicked === "7") {
+					setSeven(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
+				if (data.clicked === "8") {
+					setEight(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
+				if (data.clicked === "9") {
+					setNine(data.symbol);
+					setCurrentTurn(currentTurn + 1);
+				}
 			}
 		}
 	});
