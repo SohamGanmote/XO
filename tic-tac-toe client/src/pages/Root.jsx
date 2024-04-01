@@ -1,6 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Root = () => {
+	const playerName = localStorage.getItem("playerName");
+
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (!playerName) {
+			navigate("/");
+		}
+	}, []);
 	return (
 		<section>
 			<Outlet />

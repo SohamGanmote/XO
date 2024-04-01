@@ -3,6 +3,9 @@ import BoardButton from "../../components/UI/Buttons/BoardButton";
 import WinningModal from "../board/WinningModal";
 import { useLocation, useParams } from "react-router-dom";
 import io from "socket.io-client";
+import Button from "../../components/UI/Buttons/Button";
+import { Copy } from "lucide-react";
+
 const socket = io.connect(import.meta.env.REACT_APP_SERVER_URL);
 
 const MultiplayerBoard = () => {
@@ -363,13 +366,14 @@ const MultiplayerBoard = () => {
 			>
 				<div className="m-auto shadow-lg bg-black rounded-lg p-4 text-center">
 					<div className="loader-circle m-auto mb-8 mt-4" />
-					<p>Share your ID with the other players, please</p>
-					<div
+					<p>Share your Room ID with the other player, please</p>
+					<Button
 						onClick={handelCopyRoomId}
-						className="border px-4 py-2 m-auto w-fit mt-3 rounded-md cursor-pointer"
+						className="m-auto  mt-3 flex justify-center align-middle gap-4 text-[1rem]"
 					>
-						{roomId}
-					</div>
+						<span>{roomId}</span>
+						<Copy size={18} className="mt-1" />
+					</Button>
 				</div>
 			</div>
 		);
@@ -402,10 +406,24 @@ const MultiplayerBoard = () => {
 			>
 				<div className="m-auto shadow-lg bg-black rounded-lg p-4 ">
 					{roomId && (
-						<div className="flex justify-center items-center mb-4">
-							<h1 className="text-2xl font-bold mr-2">{player1}</h1>
-							<p className="text-xl font-bold mx-2">vs</p>
-							<h1 className="text-2xl font-bold ml-2">{player2}</h1>
+						<div className="flex justify-between items-center mb-4">
+							<h1
+								className="text-2xl font-bold mr-2 "
+								style={{
+									color: logInPlayer === player1 ? "#6faa50" : "#5755FE",
+								}}
+							>
+								(x) {logInPlayer === player1 ? "You" : player1}
+							</h1>
+							<p className="text-xl font-bold mx-2 ">vs</p>
+							<h1
+								className="text-2xl font-bold ml-2"
+								style={{
+									color: logInPlayer === player2 ? "#6faa50" : "#5755FE",
+								}}
+							>
+								(o) {logInPlayer === player2 ? "You" : player2}
+							</h1>
 						</div>
 					)}
 					<div className="grid grid-cols-3 gap-4">

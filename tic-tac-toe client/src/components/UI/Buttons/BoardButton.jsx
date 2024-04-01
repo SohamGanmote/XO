@@ -7,7 +7,7 @@ const Icon = ({ value }) => {
 	icon = noneIcon;
 	if (value === "x") icon = xIcon;
 	if (value === "o") icon = oIcon;
-	return <img src={icon} alt="" width={50} />;
+	return <img src={icon} alt="" width={50} className="m-auto" />;
 };
 
 const BoardButton = ({ value, isOpponentTurn, id, handelBoardButtonClick }) => {

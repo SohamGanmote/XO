@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import BoardButton from "../../components/UI/Buttons/BoardButton";
 import { generateRandomNumber } from "../../util/util";
 import WinningModal from "./WinningModal";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Button from "../../components/UI/Buttons/Button";
+import { LogOut } from "lucide-react";
 
 const Board = ({
 	yourIcon = localStorage.getItem("playAs") || "x",
@@ -10,6 +12,8 @@ const Board = ({
 }) => {
 	const location = useLocation();
 	const currentPath = location.pathname; //vsComputer
+
+	const navigate = useNavigate();
 
 	const [one, setOne] = useState();
 	const [two, setTwo] = useState();
@@ -267,6 +271,15 @@ const Board = ({
 							isOpponentTurn={isOpponentTurn}
 							handelBoardButtonClick={yourTurn}
 						/>
+					</div>
+					<div className="flex justify-end mt-4">
+						<Button
+							onClick={() => navigate("/select-mode")}
+							className="flex justify-center align-middle gap-2"
+						>
+							Exit
+							<LogOut size={15} className="mt-1" />
+						</Button>
 					</div>
 				</div>
 			</div>

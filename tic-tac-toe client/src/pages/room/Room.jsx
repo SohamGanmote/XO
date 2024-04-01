@@ -1,4 +1,4 @@
-import { Binary, Merge, Settings } from "lucide-react";
+import { Binary, Merge, Settings, SquareArrowLeft } from "lucide-react";
 import Button from "../../components/UI/Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -8,7 +8,9 @@ import io from "socket.io-client";
 import { generateRoomID } from "../../util/util";
 import { useQuery } from "@tanstack/react-query";
 import { getAllAvailableRooms } from "../../http/getAPIs/getApis";
+
 const socket = io.connect(import.meta.env.REACT_APP_SERVER_URL);
+
 const Room = () => {
 	const navigate = useNavigate();
 
@@ -35,7 +37,6 @@ const Room = () => {
 		navigator.clipboard
 			.writeText(generatedRoomID)
 			.then(() => {
-				alert("Room ID copied to clipboard:", generatedRoomID);
 				socket.emit("joinRoom", { roomId: generatedRoomID, player1 });
 				navigate(`/room/${generatedRoomID}?player1=${player1}`);
 			})
@@ -46,7 +47,14 @@ const Room = () => {
 
 	const handelJoinRoomWithId = () => {
 		const player1 = data.filter((item) => item.roomId === roomId);
-		const player2 = localStorage.getItem("playerName");
+		if (player1.length === 0) {
+			alert("Enter Valid room Id");
+		}
+		let player2 = localStorage.getItem("playerName");
+		if (player1[0].player1 === player2) {
+			localStorage.setItem("playerName", `user${generateRoomID(2)}`);
+			player2 = localStorage.getItem("playerName");
+		}
 		socket.emit("player2joinRoom", {
 			roomId: roomId,
 			player1: player1[0].player1,
@@ -64,7 +72,11 @@ const Room = () => {
 				style={{ height: "100vh" }}
 			>
 				<div className="w-96 m-auto shadow-lg bg-black rounded-lg p-4">
-					<h1 className="flex justify-end align-middle">
+					<h1 className="flex justify-end align-middle gap-4">
+						<SquareArrowLeft
+							className="cursor-pointer"
+							onClick={() => navigate("/select-mode")}
+						/>
 						<Settings
 							onClick={() => setIsModalVisible(true)}
 							className="cursor-pointer"

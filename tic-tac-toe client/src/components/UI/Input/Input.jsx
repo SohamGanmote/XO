@@ -13,6 +13,7 @@ const Input = ({
 	inputClass,
 	required = false,
 	disabled = false,
+	maxLength = 6,
 }) => {
 	if (!type) {
 		return (
@@ -27,6 +28,7 @@ const Input = ({
 					onChange={onChange}
 					value={value}
 					required
+					maxLength={maxLength}
 					disabled={disabled}
 				/>
 				{error && (
