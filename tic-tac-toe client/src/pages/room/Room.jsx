@@ -16,7 +16,7 @@ const Room = () => {
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 
-	const [roomId, setRoomId] = useState();
+	const [roomId, setRoomId] = useState("");
 
 	socket.on("player2joinRoom", (data) => {
 		if (data.player1 === localStorage.getItem("playerName")) {
@@ -90,7 +90,7 @@ const Room = () => {
 					/>
 
 					<Button
-						disabled={roomId.trim().length != 6}
+						disabled={roomId.length != 6}
 						className="mt-4 w-full flex justify-center align-middle gap-4"
 						type="submit"
 						onClick={handelJoinRoomWithId}
