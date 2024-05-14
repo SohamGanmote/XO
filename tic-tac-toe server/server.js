@@ -12,5 +12,5 @@ const server = http.createServer(app);
 socket(server, app);
 
 server.listen(8080, () => {
-	console.log("Server is running!!");
+	console.log("Server is running!!, PORT : 8080");
 });

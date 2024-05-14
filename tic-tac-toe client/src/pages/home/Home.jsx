@@ -10,9 +10,8 @@ const Home = () => {
 	const playerName = localStorage.getItem("playerName");
 
 	const [name, setName] = useState(null);
-
 	useEffect(() => {
-		if (playerName) {
+		if (playerName !== "null") {
 			navigate("/select-mode");
 		}
 	}, []);

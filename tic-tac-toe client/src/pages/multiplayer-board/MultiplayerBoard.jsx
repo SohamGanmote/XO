@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import BoardButton from "../../components/UI/Buttons/BoardButton";
 import WinningModal from "../board/WinningModal";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import io from "socket.io-client";
 import Button from "../../components/UI/Buttons/Button";
-import { Copy } from "lucide-react";
+import { Copy, Trash2 } from "lucide-react";
 
 const socket = io.connect(import.meta.env.REACT_APP_SERVER_URL);
 
 const MultiplayerBoard = () => {
 	const logInPlayer = localStorage.getItem("playerName");
+
+	const navigate = useNavigate();
+
 	const location = useLocation();
 	const { roomId } = useParams();
 
@@ -367,13 +370,18 @@ const MultiplayerBoard = () => {
 				<div className="m-auto shadow-lg bg-black rounded-lg p-4 text-center">
 					<div className="loader-circle m-auto mb-8 mt-4" />
 					<p>Share your Room ID with the other player, please</p>
+
 					<Button
 						onClick={handelCopyRoomId}
-						className="m-auto  mt-3 flex justify-center align-middle gap-4 text-[1rem]"
+						className="m-auto mt-3 flex justify-center align-middle gap-4 text-[1rem] cursor-copy"
 					>
 						<span>{roomId}</span>
 						<Copy size={18} className="mt-1" />
 					</Button>
+					<Trash2
+						onClick={() => navigate("/room")}
+						className="cursor-pointer"
+					/>
 				</div>
 			</div>
 		);

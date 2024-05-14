@@ -1,4 +1,4 @@
-import { Binary, Merge, Settings, SquareArrowLeft } from "lucide-react";
+import { Binary, Group, Merge, Settings, SquareArrowLeft } from "lucide-react";
 import Button from "../../components/UI/Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -84,26 +84,28 @@ const Room = () => {
 					</h1>
 					<Input
 						label="Enter room id"
+						placeholder="ex, 234234"
+						type="number"
 						onChange={(e) => setRoomId(e.target.value)}
 					/>
-					{roomId ? (
-						<Button
-							className="mt-4 w-full flex justify-center align-middle gap-4"
-							type="submit"
-							onClick={handelJoinRoomWithId}
-						>
-							<span className="font-medium">Join room</span>
-							<Merge />
-						</Button>
-					) : (
-						<Button
-							className="mt-4 w-full flex justify-center align-middle gap-4"
-							type="submit"
-							onClick={handelGenerateRoom}
-						>
-							<span className="font-medium">Generate room id</span> <Binary />
-						</Button>
-					)}
+
+					<Button
+						disabled={roomId.trim().length != 6}
+						className="mt-4 w-full flex justify-center align-middle gap-4"
+						type="submit"
+						onClick={handelJoinRoomWithId}
+					>
+						<span className="font-medium">Join room by id</span>
+						<Group />
+					</Button>
+
+					<Button
+						className="mt-4 w-full flex justify-center align-middle gap-4"
+						type="submit"
+						onClick={handelGenerateRoom}
+					>
+						<span className="font-medium">Generate room id</span> <Binary />
+					</Button>
 				</div>
 			</div>
 

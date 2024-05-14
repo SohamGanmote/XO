@@ -6,7 +6,7 @@ const Root = () => {
 
 	const navigate = useNavigate();
 	useEffect(() => {
-		if (!playerName) {
+		if (!playerName || playerName === "null") {
 			navigate("/");
 		}
 	}, []);

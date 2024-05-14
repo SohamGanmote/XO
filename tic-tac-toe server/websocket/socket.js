@@ -16,7 +16,8 @@ const socket = (server, app) => {
 	// socket.io code goes here
 	const io = socketIO(server, {
 		cors: {
-			origin: process.env.CLIENT_LINK,
+			origin: "*",
+			// origin: process.env.CLIENT_LINK,
 			methods: ["GET", "POST"],
 		},
 	});
